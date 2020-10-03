@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GBRecyclerTest</string>
+    <string name="object_name_dummy">Пушкинский музей</string>
+    <string name="show_on_map">Показать на карте</string>
+</resources>
