@@ -1,7 +1,6 @@
 package ru.project.gbrecyclertest;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import androidx.core.view.MotionEventCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MultipleTypesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -19,7 +17,7 @@ public class MultipleTypesAdapter extends RecyclerView.Adapter<RecyclerView.View
     private List<RowType> dataSet;
 
     public MultipleTypesAdapter(List<RowType> dataSet, OnStartDragListener dragStartListener) {
-        this.mDragStartListener = dragStartListener; //??????????????????????????????
+        this.mDragStartListener = dragStartListener;
         this.dataSet = dataSet;
     }
 
@@ -32,7 +30,7 @@ public class MultipleTypesAdapter extends RecyclerView.Adapter<RecyclerView.View
         } else {
             return -1;
         }
-    } //ok!
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,7 +45,7 @@ public class MultipleTypesAdapter extends RecyclerView.Adapter<RecyclerView.View
         } else {
             return null;
         }
-    } //ok!
+    }
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
@@ -64,10 +62,6 @@ public class MultipleTypesAdapter extends RecyclerView.Adapter<RecyclerView.View
             ((DayNumberHolder) holder).tvDayNumber
                     .setText(((DayNumberType) dataSet.get(position)).getText());
         }
-
-        // Start a drag whenever the handle view it touched
-
-
     }
 
     @Override

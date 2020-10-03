@@ -55,15 +55,10 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
         // Notify the adapter of the dismissal
 
-//        if (viewHolder instanceof MultipleTypesAdapter.RouteObjectHolder) {
-//            MultipleTypesAdapter.RouteObjectHolder holder = (MultipleTypesAdapter.RouteObjectHolder) viewHolder;
-//            // 32 — вправо, а 16 - влево. Определено эксперементальным путём
-//            if (i == 32) {
-//                // вызываете ныжные вам методы
-//                mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
-//            }
-//        }
-        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        if (viewHolder.getItemViewType() == RowType.ROUTE_OBJECT_TYPE) {
+                mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        }
+       // mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 
     @Override
