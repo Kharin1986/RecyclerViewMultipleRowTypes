@@ -1,6 +1,7 @@
 package ru.project.gbrecyclertest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,12 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnStartDragListener{
 
     RecyclerView recyclerView;
     MultipleTypesAdapter adapter;
     List<RowType> items = new ArrayList<>();
     Random rnd = new Random(1337);
+    //
+    private ItemTouchHelper mItemTouchHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MultipleTypesAdapter(items);
+        adapter = new MultipleTypesAdapter(items,this);
         recyclerView.setAdapter(adapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }

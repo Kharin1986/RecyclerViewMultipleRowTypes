@@ -25,11 +25,11 @@ public class RouteObjectType implements RowType {
         return routeObjectName;
     }
 
-    public View.OnClickListener getOnShowClickListener() {
+    public View.OnClickListener getOnShowClickListener(final int pos) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Показать на карте", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Показать на карте "+pos, Toast.LENGTH_SHORT).show();
             }
         };
     }
